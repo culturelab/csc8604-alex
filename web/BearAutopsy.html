@@ -1,0 +1,67 @@
+<!--starts HTML document and sets language to english. The stylesheet makes categories of different styles for entire file-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Alex and Sam: Bear Autopsy</title>
+		<style type="text/css">
+			body { background-color: #262626}
+  			.orange { color: #E46E22; }
+			.green { color: #70AD47}
+			img.info { margin: 0.5cm; padding: 1cm; background-color:#70AD47; width: 300px; height: 300px; float: left }
+			.title { font-family: Helvetica; font-size:1.5cm }
+			.font { font-family: Helvetica }
+			div.task { margin: 0.5cm; padding: 1cm; background-color: #70AD47; width: 300px; height: 300px; float: left }
+			.separator { clear: left }
+			img.hardware { height: 100px; float: left; margin-right: 10px }
+		</style>
+	</head>
+
+	<!--website contents start here. Title of website-->
+	<body>
+		<h1 class="orange title font">Bear Autopsy</h1>
+		<a href="index.php"><img class= "info" src='alex.jpg' /></a>
+		<!--each <div></div> contains an image and a description of a material that's in each of the bears-->	 
+
+			<div class="task font">
+				<img class= "hardware" src='hardware/pi.jpg'></img>
+				<p class="font"> The Raspberry Pi is the heart of Alex and Sam. Everything runs from this little low-powered computer. All the other hardware components are connected to the little computer with cables.</p>
+			</div>
+			
+			<div class="task font">
+				<img class= "hardware" src='hardware/battery.jpg'></img>
+				<p class="font">The battery is needed to make sure everything keeps working. It works just like the battery on your phone. Alex needs to be charged regularly to make sure they work when you need them to. We've made it possible for Alex to be charged wirelessly, which means that all you have to do is make sure that they sit comfortably with the blanket fully attached to the leg (the charging station). We've put buttons in place to help you find the right place to make sure the bear is charging.</p>
+			</div>
+			
+			<div class="task font">
+				<img class= "hardware" src='hardware/memory.jpg'></img>
+				<p class="font">The memory card is inserted into the Pi to store all the pictures and text captured with Alex or Sam.</p>
+			</div>
+			
+			<div class="task font">
+				<img class= "hardware" src='hardware/wifi.jpg'></img>
+				<p class="font">The internet dongle is also connected to the Pi. This little thing that looks a little like a memory stick is what allows Alex and Sam to go online. This is quite an important part of Alex and Sam, because this is the piece of hardware that makes sure that the moderated posts appear on the website!</p>
+			</div>
+			
+			<div class="task font">
+				<img class= "hardware" src='hardware/display.jpg'></img>
+				<p class="font">The display is the main part that you interact with (at least from the hardware side. We hope you play and cuddle with Alex and Sam more!). It is from here that you are able to make a new task, complete a task, or moderate existing contributions to tasks.</p>
+			</div>			
+			
+			<div class="task font">
+				<img class= "hardware" src='hardware/camera.jpg'></img>
+				<p class="font">The camera that is placed in the nose of the bears is also connected to the Pi. Although you press on the screen to take the picture, this is the part that actually captures the picture.</p>
+			</div>
+
+			<div class="task font">
+				<img class= "hardware" src='hardware/RFID.jpg'></img>
+				<p class="font">An RFID antenna is inside Alexs arm. RFID stands for Radio Frequency Identification Device, and although this sounds really complicated, all it really does is read a card with a chip in it. We've used this technology to allow for moderation on the stuffed animals. If you put you RFID token (that comes with the bear) on this antenna, it will take you to a new screen on the display. From here you will be able to moderate the contributions before they are uploaded to the website.</p>
+			</div>
+
+			<img class= "info" src='alex2.jpg' />
+			<!--diagram of how all the seperate pieces of hardware are connected to the Raspeberry Pi-->		
+		<div class="separator"> 
+			<p class="green font">The different components are all connected via cables. The diagram below shows how all the seperate parts are connected to each other.</p>
+			<img src="assets/ConnectionWhite.png"></img>
+		</div>
+	</body>
+</html>
