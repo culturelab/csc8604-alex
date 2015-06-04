@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="AlexTheAdventurous.CameraConfirmPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Image Source="{Binding Photo}" Stretch="Uniform" />
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10">
+                <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" />
+                <TextBlock Text="Happy?" Style="{StaticResource HeaderTextBlockStyle}" Margin="10,0" />
+            </StackPanel>
+
+            <Button Content="Continue" Style="{StaticResource TouchButton}" Click="Continue" />
+        </Grid>
+    </Border>
+
+</Page>

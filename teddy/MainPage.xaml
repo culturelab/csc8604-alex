@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="AlexTheAdventurous.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    DataContext="{StaticResource AlexDataSource}">
+
+    <Border Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Pick a task" Style="{StaticResource HeaderTextBlockStyle}" Margin="20,0,0,10" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Visibility="{Binding ApprovalVisibility}">
+                <TextBlock Text="use token to moderate" Style="{StaticResource CaptionTextBlockStyle}" VerticalAlignment="Center" Foreground="#e46e22" />
+                <Grid Width="36" Height="36" Margin="10,0,0,0">
+                    <Ellipse Fill="#e46e22" Stretch="Uniform" />
+                    <TextBlock Text="{Binding PostsForApproval.Count}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlyoutPickerTitleTextBlockStyle}" />
+                </Grid>
+            </StackPanel>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollMode="Disabled">
+                <ItemsControl Margin="10" ItemsSource="{Binding Tasks}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Click="OnTileClicked">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border Background="#70ad47" Width="128" Height="128" Margin="10">
+                                            <ContentPresenter />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <TextBlock Text="{Binding Title}" VerticalAlignment="Bottom" TextWrapping="Wrap" Margin="10" Style="{StaticResource TitleTextBlockStyle}" />
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</Page>

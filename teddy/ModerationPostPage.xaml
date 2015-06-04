@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="AlexTheAdventurous.ModerationPostPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AlexTheAdventurous">
+
+    <Border Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" />
+                <TextBlock Text="{Binding Task.Title}" Style="{StaticResource HeaderTextBlockStyle}" Margin="10,0" />
+            </StackPanel>
+            
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Task.Question}" Margin="10" TextWrapping="Wrap" />
+
+            <Image Grid.Row="2" Grid.Column="0" Stretch="Uniform" Source="{Binding Photo}" />
+
+            <ScrollViewer Grid.Row="2" Grid.Column="1" Name="TextScroller">
+                <TextBlock Text="{Binding Text}"  Margin="10,0" TextWrapping="WrapWholeWords" />                
+            </ScrollViewer>
+
+            <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="0" Content="Deny and delete" Style="{StaticResource TouchButton}" Click="DeclinePost" Background="#e46e22" />
+                
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center">
+                    <Button Content="Up" Click="ScrollUp" />
+                    <Button Content="Down" Click="ScrollDown" />
+                </StackPanel>
+                
+                <Button Grid.Column="2" Content="Allow and upload" Style="{StaticResource TouchButton}" Click="AcceptPost" Background="#70ad47" />
+            </Grid>
+        </Grid>
+    </Border>
+
+</Page>

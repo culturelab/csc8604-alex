@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="AlexTheAdventurous.CameraPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <CaptureElement Name="PreviewCanvas" Stretch="Uniform" />
+            <Image Name="AlternatePreview" Stretch="Uniform" />
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10">
+                <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" />
+                <TextBlock Text="Take a picture" Style="{StaticResource HeaderTextBlockStyle}" Margin="10,0" />
+            </StackPanel>
+
+            <Button Content="Take!" Style="{StaticResource TouchButton}" Click="TakePicture" Name="Take" />
+        </Grid>
+    </Border>
+</Page>

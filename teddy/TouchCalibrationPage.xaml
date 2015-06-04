@@ -1,0 +1,12 @@
+﻿<Page
+    x:Class="AlexTheAdventurous.TouchCalibrationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Canvas Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Canvas Name="Cross" Canvas.Top="100" Canvas.Left="100">
+            <Line X1="-50" X2="50" Stroke="White" StrokeThickness="5" />
+            <Line Y1="-50" Y2="50" Stroke="White" StrokeThickness="5" />
+        </Canvas>
+    </Canvas>
+</Page>
