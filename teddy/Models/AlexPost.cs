@@ -1,5 +1,4 @@
-﻿using System;
-using Windows.Storage.Streams;
+﻿using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace AlexTheAdventurous
@@ -8,6 +7,7 @@ namespace AlexTheAdventurous
     {
         public AlexTask Task { get; set; }
         public string Text { get; set; }
+
         public InMemoryRandomAccessStream PhotoData { get; set; }
         public BitmapImage Photo
         {

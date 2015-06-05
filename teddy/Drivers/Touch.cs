@@ -95,16 +95,16 @@ namespace AlexTheAdventurous
             if (x > 0 && y < 2000) // touch has been detected
             {
                 if (_touchDown)
-                    return;
+                    return;        // wait for touch up to avoid multiple sequential clicks
                 else
                     _touchDown = true;
 
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => // we need to manipulate UI on the UI thread
                 {
                     KeyboardWithFrame frame = Window.Current.Content as KeyboardWithFrame;
                     if (frame == null) return;
 
-                    if (frame.RootFrame.Content is TouchCalibrationPage)
+                    if (frame.RootFrame.Content is TouchCalibrationPage) // calibrating
                     {
                         if (((TouchCalibrationPage)frame.RootFrame.Content).ReportTouch(new Point(x, y)))
                             RequiresCalibration();
@@ -112,14 +112,17 @@ namespace AlexTheAdventurous
                         return;
                     }
 
+                    // use calibration data to map touch point to the screen coordinate
                     Point tap = new Point(x * _touchScaleX + _touchOffsetX, y * _touchScaleY + _touchOffsetY);
                     Debug.WriteLine("Touch injection: " + tap);
 
                     bool hideKeyboard = false;
                     foreach (UIElement element in VisualTreeHelper.FindElementsInHostCoordinates(tap, Window.Current.Content))
                     {
+                        // walk the UI tree from bottom to top
                         if (element is Button)
                         {
+                            // use UI automation to invoke the Button.Click event
                             AutomationPeer peer = FrameworkElementAutomationPeer.CreatePeerForElement(element);
                             if (peer == null) continue;
 
@@ -127,17 +130,18 @@ namespace AlexTheAdventurous
                             if (pattern == null) continue;
 
                             pattern.Invoke();
+
+                            // we only recognize clicking either on a button or on the text box
+                            // if we click on not-a-textbox, i.e. button, hide the on-screen keyboard
                             hideKeyboard = true;
                         }
                         else if (element is TextBox)
                         {
-                            ((TextBox)element).Focus(FocusState.Keyboard);
-                            frame.FocusedBox = (TextBox)element;
-                            frame.IsKeyboardVisible = true;
-                            return;
+                            Focus((TextBox)element);
+                            return; // cancel hiding the on-screen keyboard
                         }
                         else if (element == frame.KeyboardElement)
-                            return;
+                            return; // cancel hiding the on-screen keyboard if the tapped button was a button on it
                     }
 
                     if (hideKeyboard)
